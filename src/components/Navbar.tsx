@@ -9,6 +9,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react"; // Θα χρειαστείς το lucide-react για τα εικονίδια
 import CalendlyButton from "./CalendlyButton"; // Το κουμπί για το Calendly
 import { useCalendly } from "./CalendlyProvider";
+import { Lato } from "next/font/google";
+
+const lato = Lato({
+  weight: ["300", "400", "700"],
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+});
+
 interface NavbarProps {
   dict: Dictionary;
   lang: string;
@@ -30,7 +38,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
   };
 
   const navLinkStyles =
-    "text-[14px] md:text-[13px] font-medium text-slate-500 hover:text-sky-500 transition-colors duration-200 tracking-wide";
+    "text-[16px] font-medium text-slate-500 hover:text-sky-500 transition-colors duration-200 tracking-wide";
   const activeLinkStyles = "text-sky-400 font-semibold";
 
   // Έλεγχος Scroll για εμφάνιση/απόκρυψη Navbar
@@ -90,7 +98,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             exit={{ y: -100 }}
-            className="border-b border-slate-50 bg-[#f5945c]/10 backdrop-blur-md sticky top-0 z-50 w-full "
+            className={`border-slate-50 bg-[#1974D2]/40 backdrop-blur-md sticky top-0 z-50 w-full ${lato.className}`}
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
               <div className="flex justify-between h-20 items-center">
@@ -173,10 +181,16 @@ export default function Navbar({ dict, lang }: NavbarProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 w-screen h-[100dvh] bg-white z-[9999] flex flex-col md:hidden"
+            className={`fixed inset-0 w-screen h-[100dvh] bg-white z-[9999] flex flex-col md:hidden ${lato.className}`}
+            style={{
+              backgroundImage: "url(/images/mobile_bg.jpg)",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
           >
             {/* Header μέσα στο Mobile Menu για να έχουμε το Logo και το X στην ίδια ευθεία */}
-            <div className="flex justify-between items-center bg-pink-100/40 h-20 px-4 border-b border-slate-50">
+            <div className="flex justify-between items-center bg-[#1974D2]/40 h-20 px-4 border-b border-slate-50">
               <Image
                 src="/images/logo.png"
                 alt="Logo"

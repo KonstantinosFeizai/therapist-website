@@ -12,14 +12,14 @@ export default async function Home({
   const dict = await getDictionary(lang as "el" | "en");
 
   return (
-    <div
-      className="relative min-h-screen bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: "url('/images/vecteezy_minimalist.jpg')" }}
-    >
+    <div className="relative min-h-screen bg-cover bg-center bg-fixed">
       {/* Overlay για καλύτερη αναγνωσιμότητα */}
       <div className="absolute inset-0 bg-white/80 -z-10"></div>
 
-      <div className="relative isolate min-h-[calc(100vh-80px)] flex items-center">
+      <div
+        className="relative isolate min-h-[calc(100vh-80px)] flex items-center"
+        style={{ backgroundImage: "url('/images/vecteezy_minimalist.jpg')" }}
+      >
         {/* Background Zen "Σύννεφα" με τα νέα χρώματα */}
         <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
           <div
@@ -69,10 +69,7 @@ export default async function Home({
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-sky-100 to-pink-100 blur-lg opacity-60"></div>
 
               {/* Κάδρο με background image */}
-              <div 
-                className="relative mx-auto w-[296px] h-[396px] sm:w-[336px] sm:h-[466px] rounded-3xl bg-cover bg-center p-2"
-                style={{ backgroundImage: "url('/images/portrait_bg.jpg')" }}
-              >
+              <div className="relative mx-auto w-[296px] h-[396px] sm:w-[336px] sm:h-[466px] rounded-3xl bg-cover bg-center p-2">
                 <div className="relative w-full h-full rounded-3xl shadow-xl overflow-hidden">
                   <Image
                     src="/images/melisa.png"

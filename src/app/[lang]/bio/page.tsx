@@ -25,7 +25,12 @@ export default async function BioPage({
                     Portrait
                   </span>
                 </div>
-                {/* <Image src="/images/melissa-bio.jpg" alt="Melissa Tsela" fill className="object-cover" /> */}
+                <Image
+                  src="/images/melisa.png"
+                  alt="Melissa Tsela"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
 

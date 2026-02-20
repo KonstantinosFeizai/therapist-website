@@ -1,66 +1,72 @@
 import Link from "next/link";
 import { Dictionary } from "@/lib/dictionary";
 import Image from "next/image";
+import { Lato } from "next/font/google";
+
+const lato = Lato({
+  weight: ["300", "400", "700"],
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+});
 
 interface FooterProps {
   dict: Dictionary;
-  lang: string; // Προσθέτουμε το lang για τα σωστά links
+  lang: string; // we use lang for the correct links
 }
 
 export default function Footer({ dict, lang }: FooterProps) {
+  const headingStyles =
+    "text-base font-bold text-slate-900 uppercase tracking-widest mb-6";
+  const linkStyles =
+    "text-base text-slate-600 hover:text-pink-500 transition-colors";
+  const contactLinkStyles =
+    "text-base text-slate-600 hover:text-sky-500 transition-colors";
+  const bottomTextStyles = "text-base text-slate-400";
+
   return (
-    <footer className="bg-blue-100 border-t border-slate-100 mt-auto">
+    <footer
+      className={`bg-[#1974D2]/40 border-t border-slate-100 mt-auto ${lato.className}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-12">
-          {/* Στήλη 1: Logo & Τίτλος */}
+          {/* Column 1: Logo & Title */}
           <div className="col-span-1 md:col-span-1 text-center md:text-left">
             <Link
               href={`/${lang}`}
               className="inline-flex items-center justify-center md:justify-start"
             >
               <Image
-                src="/images/logo.png" // Η διαδρομή ξεκινάει αυτόματα από τον φάκελο public
+                src="/images/logo.png" // The path starts automatically from the public folder
                 alt="Logo"
-                width={120} // Πλάτος σε pixels
-                height={56} // Ύψος σε pixels
+                width={120} // Width in pixels
+                height={56} // Height in pixels
                 className="object-contain"
               />
             </Link>
-            <p className="mt-4 text-sm font-semibold text-slate-800">
-              Ονοματεπώνυμο Ψυχολόγου
+            <p className="mt-4 text-base font-semibold text-slate-800">
+              Μελίσα Τσέλα
             </p>
             <p className="text-xs text-slate-500 uppercase tracking-wider mt-1">
               {dict.footer.title}
             </p>
           </div>
 
-          {/* Στήλη 2: Quick Links */}
+          {/* Column 2: Quick Links */}
           <div className="text-center md:text-left">
-            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-widest mb-6">
-              {dict.footer.quick_links}
-            </h3>
+            <h3 className={headingStyles}>{dict.footer.quick_links}</h3>
             <ul className="space-y-3">
               <li>
-                <Link
-                  href={`/${lang}/bio`}
-                  className="text-sm text-slate-600 hover:text-pink-500 transition-colors"
-                >
+                <Link href={`/${lang}/bio`} className={linkStyles}>
                   {dict.navigation.bio}
                 </Link>
               </li>
               <li>
-                <Link
-                  href={`/${lang}/blog`}
-                  className="text-sm text-slate-600 hover:text-pink-500 transition-colors"
-                >
+                <Link href={`/${lang}/blog`} className={linkStyles}>
                   {dict.navigation.blog}
                 </Link>
               </li>
               <li>
-                <Link
-                  href={`/${lang}/contact`}
-                  className="text-sm text-slate-600 hover:text-pink-500 transition-colors"
-                >
+                <Link href={`/${lang}/contact`} className={linkStyles}>
                   {dict.navigation.contact}
                 </Link>
               </li>
@@ -69,23 +75,15 @@ export default function Footer({ dict, lang }: FooterProps) {
 
           {/* Στήλη 3: Legal & FAQ */}
           <div className="text-center md:text-left">
-            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-widest mb-6">
-              {dict.footer.legal}
-            </h3>
+            <h3 className={headingStyles}>{dict.footer.legal}</h3>
             <ul className="space-y-3">
               <li>
-                <Link
-                  href={`/${lang}/faq`}
-                  className="text-sm text-slate-600 hover:text-pink-500 transition-colors"
-                >
+                <Link href={`/${lang}/faq`} className={linkStyles}>
                   {dict.footer.faq}
                 </Link>
               </li>
               <li>
-                <Link
-                  href={`/${lang}/privacy`}
-                  className="text-sm text-slate-600 hover:text-pink-500 transition-colors"
-                >
+                <Link href={`/${lang}/privacy`} className={linkStyles}>
                   {dict.footer.privacy}
                 </Link>
               </li>
@@ -94,20 +92,12 @@ export default function Footer({ dict, lang }: FooterProps) {
 
           {/* Στήλη 4: Social & Contact */}
           <div className="text-center md:text-left">
-            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-widest mb-6">
-              {dict.footer.contact_info}
-            </h3>
+            <h3 className={headingStyles}>{dict.footer.contact_info}</h3>
             <div className="flex flex-col space-y-3">
-              <a
-                href="mailto:info@example.com"
-                className="text-sm text-slate-600 hover:text-sky-500 transition-colors"
-              >
+              <a href="mailto:info@example.com" className={contactLinkStyles}>
                 info@psychologist.gr
               </a>
-              <a
-                href="tel:+302100000000"
-                className="text-sm text-slate-600 hover:text-sky-500 transition-colors"
-              >
+              <a href="tel:+302100000000" className={contactLinkStyles}>
                 +30 210 00 00 000
               </a>
 
@@ -149,7 +139,9 @@ export default function Footer({ dict, lang }: FooterProps) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0 text-xs text-slate-400 text-center md:text-left">
+        <div
+          className={`mt-12 pt-6 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0 text-center md:text-left ${bottomTextStyles}`}
+        >
           <p>
             © {new Date().getFullYear()} Psychologist Name. All rights reserved.
           </p>
