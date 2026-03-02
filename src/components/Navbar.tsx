@@ -7,8 +7,6 @@ import { Dictionary } from "@/lib/dictionary";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react"; // Θα χρειαστείς το lucide-react για τα εικονίδια
-import CalendlyButton from "./CalendlyButton"; // Το κουμπί για το Calendly
-import { useCalendly } from "./CalendlyProvider";
 import { Lato } from "next/font/google";
 
 const lato = Lato({
@@ -28,7 +26,6 @@ export default function Navbar({ dict, lang }: NavbarProps) {
   const [isAtTop, setIsAtTop] = useState(true);
   const lastScrollYRef = useRef(0);
   const scrollYRef = useRef(0);
-  const { openBooking } = useCalendly();
   const pathname = usePathname();
   const nextLang = lang === "el" ? "en" : "el";
   const getTransformedPath = (targetLang: string) => {
@@ -167,12 +164,6 @@ export default function Navbar({ dict, lang }: NavbarProps) {
                   {lang === "el" ? "EN" : "EL"}
                 </Link>
               </div>
-
-              <CalendlyButton
-                lang={lang}
-                text={dict.navigation.booking}
-                className="ml-4 px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-sky-400 hover:bg-sky-500 transition-all shadow-sm"
-              />
             </div>
 
             {/* Mobile Toggle Button */}
@@ -265,16 +256,6 @@ export default function Navbar({ dict, lang }: NavbarProps) {
                   {lang === "el" ? "EN" : "EL"}
                 </Link>
               </div>
-
-              <button
-                onClick={() => {
-                  setIsOpen(false); // Κλείνει το mobile menu
-                  openBooking(); // Ανοίγει το Calendly
-                }}
-                className="ml-4 px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-sky-400 hover:bg-sky-500 transition-all shadow-sm"
-              >
-                {dict.navigation.booking}
-              </button>
             </motion.div>
           </motion.div>
         )}

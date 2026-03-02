@@ -27,7 +27,7 @@ export default function CalendlyProvider({
     <CalendlyContext.Provider value={{ openBooking: () => setIsOpen(true) }}>
       {children}
       <PopupModal
-        url="https://calendly.com/buffon-feizai/45min" // Εδώ θα μπει το link της Μελίσας
+        url="" // Εδώ θα μπει το link της Μελίσας
         onModalClose={() => setIsOpen(false)}
         open={isOpen}
         rootElement={document.body}

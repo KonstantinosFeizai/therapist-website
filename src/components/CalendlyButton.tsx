@@ -23,7 +23,7 @@ export default function CalendlyButton({
 
   return (
     <PopupButton
-      url="https://calendly.com/buffon-feizai/45min" /* ΑΝΤΙΚΑΤΑΣΤΗΣΕ ΜΕ ΤΟ LINK ΤΗΣ ΜΕΛΙΣΑΣ */
+      url="" /* ΑΝΤΙΚΑΤΑΣΤΗΣΕ ΜΕ ΤΟ LINK ΤΗΣ ΜΕΛΙΣΑΣ */
       rootElement={document.body}
       text={text}
       className={className}

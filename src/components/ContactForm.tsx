@@ -15,15 +15,21 @@ export default function ContactForm({ dict }: { dict: ContactDict }) {
   const [status, setStatus] = useState<
     "IDLE" | "SENDING" | "SUCCESS" | "ERROR"
   >("IDLE");
+  const formspreeFormId = process.env.NEXT_PUBLIC_FORMSPREE_KEY;
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (!formspreeFormId) {
+      setStatus("ERROR");
+      return;
+    }
+
     setStatus("SENDING");
 
     const formData = new FormData(e.currentTarget);
 
-    // ΠΡΟΣΟΧΗ: Βάλε εδώ το δικό σου ID από το Formspree
-    const response = await fetch("https://formspree.io/f/xzdalvbr", {
+    const response = await fetch(`https://formspree.io/f/${formspreeFormId}`, {
       method: "POST",
       body: formData,
       headers: { Accept: "application/json" },

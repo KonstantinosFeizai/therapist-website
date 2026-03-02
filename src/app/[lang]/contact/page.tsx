@@ -1,6 +1,5 @@
 import { getDictionary } from "@/lib/dictionary";
 import ContactForm from "@/components/ContactForm";
-import ContactBookingButton from "@/components/ContactBookingButton";
 
 export default async function ContactPage({
   params,
@@ -26,34 +25,7 @@ export default async function ContactPage({
 
       <section className="pb-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Κάρτα Calendly */}
-            <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-rose-50 rounded-2xl flex items-center justify-center mb-6 text-rose-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
-                  />
-                </svg>
-              </div>
-              <h2 className="text-2xl font-semibold text-slate-800 mb-4">
-                {dict.contact.booking_title}
-              </h2>
-              <p className="text-slate-500 mb-8 leading-relaxed">
-                {dict.contact.booking_desc}
-              </p>
-              <ContactBookingButton text={dict.contact.booking_btn} />
-            </div>
-
+          <div className="grid grid-cols-1 gap-12 items-start">
             {/* Client Component Φόρμας */}
             <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm">
               <h2 className="text-2xl font-semibold text-slate-800 mb-4">

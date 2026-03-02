@@ -45,10 +45,10 @@ export default async function Home({
 
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <Link
-                href={`/${lang}/booking`}
-                className="rounded-full bg-sky-500 px-8 py-4 text-sm font-semibold text-white shadow-md hover:bg-sky-600 hover:shadow-sky-200 transition-all active:scale-95"
+                href={`/${lang}/contact`}
+                className="rounded-full bg-sky-500 px-10 py-4 text-sm font-semibold text-white shadow-md hover:bg-sky-600 hover:shadow-sky-200 transition-all active:scale-95"
               >
-                {dict.navigation.booking}
+                {dict.home.contact_cta}
               </Link>
               <Link
                 href={`/${lang}/bio`}
