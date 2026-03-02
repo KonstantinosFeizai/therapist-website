@@ -10,7 +10,7 @@ export default async function FaqPage({
   const dict = await getDictionary(lang as "el" | "en");
 
   return (
-    <main className="min-h-screen bg-[#fafaf9] py-20">
+    <main className="min-h-screen  py-20">
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
         <h1 className="text-4xl font-light text-slate-800 mb-12 text-center">
           {dict.faq.title}

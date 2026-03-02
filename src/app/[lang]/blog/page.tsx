@@ -27,7 +27,7 @@ export default async function BlogPage({
   const posts = await getPosts(lang);
 
   return (
-    <main className="min-h-screen pt-10 pb-24 bg-[#fafaf9]">
+    <main className="min-h-screen pt-10 pb-24 ">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-light text-slate-800 sm:text-5xl mb-6">

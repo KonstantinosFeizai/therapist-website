@@ -23,7 +23,7 @@ export default function ContactForm({ dict }: { dict: ContactDict }) {
     const formData = new FormData(e.currentTarget);
 
     // ΠΡΟΣΟΧΗ: Βάλε εδώ το δικό σου ID από το Formspree
-    const response = await fetch("https://formspree.io/f/xdalelaa", {
+    const response = await fetch("https://formspree.io/f/xzdalvbr", {
       method: "POST",
       body: formData,
       headers: { Accept: "application/json" },

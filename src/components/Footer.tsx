@@ -18,7 +18,7 @@ export default function Footer({ dict, lang }: FooterProps) {
   const headingStyles =
     "text-base font-bold text-slate-900 uppercase tracking-widest mb-6";
   const linkStyles =
-    "text-base text-slate-600 hover:text-pink-500 transition-colors";
+    "text-base text-slate-600 hover:text-pink-400 transition-colors";
   const contactLinkStyles =
     "text-base text-slate-600 hover:text-sky-500 transition-colors";
   const bottomTextStyles = "text-base text-slate-400";
@@ -94,17 +94,20 @@ export default function Footer({ dict, lang }: FooterProps) {
           <div className="text-center md:text-left">
             <h3 className={headingStyles}>{dict.footer.contact_info}</h3>
             <div className="flex flex-col space-y-3">
-              <a href="mailto:info@example.com" className={contactLinkStyles}>
-                info@psychologist.gr
+              <a
+                href="mailto:melisatsela00@gmail.com"
+                className={contactLinkStyles}
+              >
+                melisatsela00@gmail.com
               </a>
-              <a href="tel:+302100000000" className={contactLinkStyles}>
-                +30 210 00 00 000
+              <a href="tel:+306942471869" className={contactLinkStyles}>
+                +30 6942471869
               </a>
 
               {/* Social Icons */}
               <div className="flex justify-center md:justify-start space-x-5 pt-4">
                 <a
-                  href="https://www.linkedin.com/in/konstantinos-feizai"
+                  href="https://www.linkedin.com/in/melisa-tsela/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-slate-400 hover:text-sky-500 transition-colors"
@@ -140,12 +143,9 @@ export default function Footer({ dict, lang }: FooterProps) {
 
         {/* Bottom Bar */}
         <div
-          className={`mt-12 pt-6 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0 text-center md:text-left ${bottomTextStyles}`}
+          className={`mt-12 pt-6 border-t border-slate-200 flex justify-center items-center text-center ${bottomTextStyles}`}
         >
-          <p>
-            © {new Date().getFullYear()} Psychologist Name. All rights reserved.
-          </p>
-          <p>Created with Love & React</p>
+          <p>© {new Date().getFullYear()} Melisa Tsela. All rights reserved.</p>
         </div>
       </div>
     </footer>

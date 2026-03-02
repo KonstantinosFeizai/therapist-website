@@ -11,7 +11,7 @@ export default async function ContactPage({
   const dict = await getDictionary(lang as "el" | "en");
 
   return (
-    <main className="min-h-screen  bg-[#fafaf9]">
+    <main className="min-h-screen ">
       {/* Hero Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">

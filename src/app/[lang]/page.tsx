@@ -1,7 +1,7 @@
 import { getDictionary } from "@/lib/dictionary";
 import FadeIn from "@/components/FadeIn";
+import HeroAnimation from "@/components/HeroAnimation";
 import Link from "next/link";
-import Image from "next/image";
 
 export default async function Home({
   params,
@@ -12,14 +12,14 @@ export default async function Home({
   const dict = await getDictionary(lang as "el" | "en");
 
   return (
-    <div className="relative min-h-screen bg-cover bg-center bg-fixed">
+    <div
+      className="relative min-h-screen bg-cover bg-center bg-fixed"
+      style={{ backgroundImage: "url('/images/vecteezy_minimalist.jpg')" }}
+    >
       {/* Overlay για καλύτερη αναγνωσιμότητα */}
       <div className="absolute inset-0 bg-white/80 -z-10"></div>
 
-      <div
-        className="relative isolate min-h-[calc(100vh-80px)] flex items-center"
-        style={{ backgroundImage: "url('/images/vecteezy_minimalist.jpg')" }}
-      >
+      <div className="relative isolate min-h-[calc(100vh-80px)] flex items-center">
         {/* Background Zen "Σύννεφα" με τα νέα χρώματα */}
         <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
           <div
@@ -63,29 +63,13 @@ export default async function Home({
           </div>
 
           {/* Φωτογραφία (Δεξιά Στήλη) */}
-          <div className="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0">
-            <div className="relative">
-              {/* Διακοσμητικό πλαίσιο πίσω από τη φωτό */}
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-sky-100 to-pink-100 blur-lg opacity-60"></div>
-
-              {/* Κάδρο με background image */}
-              <div className="relative mx-auto w-[296px] h-[396px] sm:w-[336px] sm:h-[466px] rounded-3xl bg-cover bg-center p-2">
-                <div className="relative w-full h-full rounded-3xl shadow-xl overflow-hidden">
-                  <Image
-                    src="/images/melisa.png"
-                    alt="Melisa - Therapist"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 flex justify-center items-center">
+            <HeroAnimation />
           </div>
         </div>
       </div>
       {/* Services Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {/* Card 1 - Ατομική Θεραπεία */}
@@ -193,7 +177,7 @@ export default async function Home({
         </div>
       </section>
       {/* Process Section */}
-      <section className="py-24 bg-slate-50/50">
+      <section className="py-24 ">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[11px] font-bold tracking-[0.2em] text-pink-500 uppercase mb-4">

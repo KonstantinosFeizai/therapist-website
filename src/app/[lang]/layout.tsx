@@ -36,8 +36,15 @@ export default async function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {/* Τυλίγουμε τα πάντα με τον Provider */}
         <CalendlyProvider>
-          <Navbar dict={dict} lang={lang} />
-          <main className="flex-grow">{children}</main>
+          <div
+            className="bg-cover bg-center bg-fixed"
+            style={{
+              backgroundImage: "url('/images/vecteezy_minimalist.jpg')",
+            }}
+          >
+            <Navbar dict={dict} lang={lang} />
+            <main className="flex-grow">{children}</main>
+          </div>
           <Footer dict={dict} lang={lang} />
         </CalendlyProvider>
       </body>

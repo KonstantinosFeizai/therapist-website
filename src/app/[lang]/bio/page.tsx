@@ -1,5 +1,6 @@
 import { getDictionary } from "@/lib/dictionary";
 import Image from "next/image";
+import BlobLottie from "@/components/BlobLottie";
 
 export default async function BioPage({
   params,
@@ -14,12 +15,13 @@ export default async function BioPage({
       {/* Decorative Background Blobs */}
       <div className="absolute top-[10%] -left-20 w-96 h-96 bg-rose-100/40 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute top-[40%] -right-20 w-[500px] h-[500px] bg-sky-100/30 rounded-full blur-[130px] pointer-events-none"></div>
-      <section className="py-20 bg-gradient-to-br from-[#bde4f9] via-[#f4f9ff] to-[#f1f8ff]">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
             {/* Φωτογραφία */}
-            <div className="w-full md:w-1/3 max-w-[400px]">
-              <div className="relative aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white ring-1 ring-slate-100">
+            <div className="relative w-[82%] max-w-[320px] md:w-1/3 md:max-w-[400px]">
+              <BlobLottie className="pointer-events-none absolute -inset-32 z-0 opacity-50" />
+              <div className="relative z-10 aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-[0_30px_80px_rgba(15,23,42,0.35)]">
                 <div className="absolute inset-0 bg-slate-100 flex items-center justify-center">
                   <span className="text-slate-400 text-xs tracking-widest uppercase">
                     Portrait
@@ -42,7 +44,7 @@ export default async function BioPage({
               <p className="text-xl text-slate-600 font-light leading-relaxed">
                 {dict.bio.hero_description}
               </p>
-              <div className="mt-8 p-8 bg-white/40 backdrop-blur-md rounded-[2.5rem] border border-white shadow-xl shadow-rose-500/5 relative overflow-hidden group">
+              <div className="mt-8 p-8  rounded-[2.5rem] border border-white shadow-xl shadow-rose-500/5 relative overflow-hidden group">
                 {/* Μια διακριτική λεπτομέρεια στην γωνία */}
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                   <svg
@@ -73,7 +75,7 @@ export default async function BioPage({
       </section>
 
       {/* 2. Εκπαίδευση & Εμπειρία */}
-      <section className="py-24 bg-rose-50/60">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Εκπαίδευση */}
@@ -140,7 +142,7 @@ export default async function BioPage({
       </section>
 
       {/* 3. Τι είναι η Συστημική */}
-      <section className="py-24 bg-white">
+      <section className="py-24">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h3 className="text-3xl font-light text-slate-800 mb-8">
             {dict.bio.systemic_title}
@@ -160,7 +162,7 @@ export default async function BioPage({
       </section>
 
       {/* Quality Note */}
-      <section className="pb-24 bg-white">
+      <section className="pb-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="h-px bg-slate-200/60 w-full mb-12"></div>
           <p className="text-center text-slate-500 text-sm italic font-light tracking-wide">

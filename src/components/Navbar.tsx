@@ -25,6 +25,7 @@ interface NavbarProps {
 export default function Navbar({ dict, lang }: NavbarProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [isOpen, setIsOpen] = useState(false); // Για το Mobile Menu
+  const [isAtTop, setIsAtTop] = useState(true);
   const lastScrollYRef = useRef(0);
   const scrollYRef = useRef(0);
   const { openBooking } = useCalendly();
@@ -38,14 +39,27 @@ export default function Navbar({ dict, lang }: NavbarProps) {
   };
 
   const navLinkStyles =
-    "text-[16px] font-medium text-slate-500 hover:text-sky-500 transition-colors duration-200 tracking-wide";
-  const activeLinkStyles = "text-sky-400 font-semibold";
+    "text-[16px] font-bold text-slate-500 hover:text-[#89CFF0] transition-all duration-200 ease-out tracking-wide";
+  const activeLinkStyles = "!text-sky-500 !text-[18px] font-semibold";
+  const mobileNavLinkStyles = "text-2xl font-light text-slate-600";
+  const normalizedPathname = pathname?.replace(/\/+$/, "") || "";
+  const isActiveRoute = (route: string) => {
+    const normalizedRoute = route.replace(/\/+$/, "");
+    if (normalizedRoute === `/${lang}`) {
+      return normalizedPathname === normalizedRoute;
+    }
+    return (
+      normalizedPathname === normalizedRoute ||
+      normalizedPathname.startsWith(`${normalizedRoute}/`)
+    );
+  };
 
   // Έλεγχος Scroll για εμφάνιση/απόκρυψη Navbar
   useEffect(() => {
     const controlNavbar = () => {
       if (isOpen) return; // Αν το μενού είναι ανοιχτό, μην την κρύβεις
       const currentScrollY = window.scrollY;
+      setIsAtTop(currentScrollY <= 0);
       if (currentScrollY > lastScrollYRef.current && currentScrollY > 100) {
         setIsVisible(false);
       } else {
@@ -92,87 +106,90 @@ export default function Navbar({ dict, lang }: NavbarProps) {
 
   return (
     <>
-      <AnimatePresence>
-        {(isVisible || isOpen) && (
-          <motion.nav
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            exit={{ y: -100 }}
-            className={`border-slate-50 bg-[#1974D2]/40 backdrop-blur-md sticky top-0 z-50 w-full ${lato.className}`}
-          >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-              <div className="flex justify-between h-20 items-center">
-                {/* Logo */}
-                <div className="flex-shrink-0 z-50">
-                  <Link href={`/${lang}`}>
-                    <Image
-                      src="/images/logo.png"
-                      alt="Logo"
-                      width={110}
-                      height={35}
-                      priority
-                      className="transition-transform duration-300 ease-in-out hover:scale-110"
-                    />
-                  </Link>
-                </div>
-
-                {/* Desktop Menu */}
-                <div className="hidden md:flex space-x-10 items-center">
-                  <Link
-                    href={`/${lang}`}
-                    className={`${navLinkStyles} ${pathname === `/${lang}` ? activeLinkStyles : ""}`}
-                  >
-                    {dict.navigation.home}
-                  </Link>
-                  <Link
-                    href={`/${lang}/bio`}
-                    className={`${navLinkStyles} ${pathname === `/${lang}/bio` ? activeLinkStyles : ""}`}
-                  >
-                    {dict.navigation.bio}
-                  </Link>
-                  <Link
-                    href={`/${lang}/blog`}
-                    className={`${navLinkStyles} ${pathname === `/${lang}/blog` ? activeLinkStyles : ""}`}
-                  >
-                    {dict.navigation.blog}
-                  </Link>
-                  <Link
-                    href={`/${lang}/contact`}
-                    className={`${navLinkStyles} ${pathname === `/${lang}/contact` ? activeLinkStyles : ""}`}
-                  >
-                    {dict.navigation.contact}
-                  </Link>
-
-                  <div className="flex items-center border-l pl-6 border-slate-200">
-                    <Link
-                      href={getTransformedPath(nextLang)}
-                      className="text-[11px] font-bold tracking-widest text-slate-400 hover:text-pink-500 uppercase"
-                    >
-                      {lang === "el" ? "EN" : "EL"}
-                    </Link>
-                  </div>
-
-                  <CalendlyButton
-                    lang={lang}
-                    text={dict.navigation.booking}
-                    className="ml-4 px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-sky-400 hover:bg-sky-500 transition-all shadow-sm"
-                  />
-                </div>
-
-                {/* Mobile Toggle Button */}
-                <div className="md:hidden flex items-center z-50">
-                  <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="text-slate-600 p-2"
-                  >
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
-                  </button>
-                </div>
-              </div>
+      <motion.nav
+        initial={false}
+        animate={{ y: isVisible || isOpen ? 0 : -100 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        className={`sticky top-0 z-50 w-full transition-colors duration-300 will-change-transform ${
+          isAtTop
+            ? "bg-transparent shadow-none backdrop-blur-0"
+            : "bg-gradient-to-r from-[#b1d8e7] via-[#fcf2f0] to-[#d5beae] shadow-sm shadow-slate-300/40 backdrop-blur-md"
+        } ${lato.className}`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+          <div className="flex justify-between h-20 items-center">
+            {/* Logo */}
+            <div className="flex-shrink-0 z-50">
+              <Link href={`/${lang}`}>
+                <Image
+                  src="/images/logo.png"
+                  alt="Logo"
+                  width={110}
+                  height={35}
+                  priority
+                  className="transition-transform duration-300 ease-in-out hover:scale-110"
+                />
+              </Link>
             </div>
-          </motion.nav>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex space-x-10 items-center">
+              <Link
+                href={`/${lang}`}
+                className={`${navLinkStyles} ${isActiveRoute(`/${lang}`) ? activeLinkStyles : ""}`}
+              >
+                {dict.navigation.home}
+              </Link>
+              <Link
+                href={`/${lang}/bio`}
+                className={`${navLinkStyles} ${isActiveRoute(`/${lang}/bio`) ? activeLinkStyles : ""}`}
+              >
+                {dict.navigation.bio}
+              </Link>
+              <Link
+                href={`/${lang}/blog`}
+                className={`${navLinkStyles} ${isActiveRoute(`/${lang}/blog`) ? activeLinkStyles : ""}`}
+              >
+                {dict.navigation.blog}
+              </Link>
+              <Link
+                href={`/${lang}/contact`}
+                className={`${navLinkStyles} ${isActiveRoute(`/${lang}/contact`) ? activeLinkStyles : ""}`}
+              >
+                {dict.navigation.contact}
+              </Link>
+
+              <div className="flex items-center border-l pl-6 border-slate-200">
+                <Link
+                  href={getTransformedPath(nextLang)}
+                  className="text-[11px] font-bold tracking-widest text-slate-400 hover:text-pink-500 uppercase"
+                >
+                  {lang === "el" ? "EN" : "EL"}
+                </Link>
+              </div>
+
+              <CalendlyButton
+                lang={lang}
+                text={dict.navigation.booking}
+                className="ml-4 px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-sky-400 hover:bg-sky-500 transition-all shadow-sm"
+              />
+            </div>
+
+            {/* Mobile Toggle Button */}
+            <div className="md:hidden flex items-center z-50">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-slate-600 p-2"
+              >
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </div>
+          </div>
+        </div>
+        {!isAtTop && (
+          <div className="pointer-events-none absolute inset-x-0 -bottom-4 h-4 bg-gradient-to-b from-slate-300/20 to-transparent" />
         )}
-      </AnimatePresence>
+      </motion.nav>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
@@ -181,16 +198,13 @@ export default function Navbar({ dict, lang }: NavbarProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={`fixed inset-0 w-screen h-[100dvh] bg-white z-[9999] flex flex-col md:hidden ${lato.className}`}
-            style={{
-              backgroundImage: "url(/images/mobile_bg.jpg)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className={`fixed inset-0 z-[9999] flex h-dvh w-screen flex-col overflow-hidden bg-gradient-to-br from-[#b1d8e7] via-[#fcf2f0] to-[#d5beae] md:hidden ${lato.className}`}
           >
+            <div className="pointer-events-none absolute inset-0 z-[1] bg-white/10" />
+
             {/* Header μέσα στο Mobile Menu για να έχουμε το Logo και το X στην ίδια ευθεία */}
-            <div className="flex justify-between items-center bg-[#1974D2]/40 h-20 px-4 border-b border-slate-50">
+            <div className="relative z-10 flex justify-between items-center bg-white/30 h-20 px-4 border-b border-white/30">
               <Image
                 src="/images/logo.png"
                 alt="Logo"
@@ -207,37 +221,37 @@ export default function Navbar({ dict, lang }: NavbarProps) {
 
             {/* Τα Links κεντραρισμένα στο υπόλοιπο ύψος */}
             <motion.div
-              initial={{ x: 48, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 48, opacity: 0 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="flex-grow flex flex-col items-center justify-center space-y-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="relative z-10 flex-grow flex flex-col items-center justify-center space-y-8"
             >
               <Link
                 href={`/${lang}`}
                 onClick={() => setIsOpen(false)}
-                className="text-2xl font-light text-slate-600"
+                className={`${mobileNavLinkStyles} ${isActiveRoute(`/${lang}`) ? "!text-sky-500 font-semibold" : ""}`}
               >
                 {dict.navigation.home}
               </Link>
               <Link
                 href={`/${lang}/bio`}
                 onClick={() => setIsOpen(false)}
-                className="text-2xl font-light text-slate-600"
+                className={`${mobileNavLinkStyles} ${isActiveRoute(`/${lang}/bio`) ? "!text-sky-500 font-semibold" : ""}`}
               >
                 {dict.navigation.bio}
               </Link>
               <Link
                 href={`/${lang}/blog`}
                 onClick={() => setIsOpen(false)}
-                className="text-2xl font-light text-slate-600"
+                className={`${mobileNavLinkStyles} ${isActiveRoute(`/${lang}/blog`) ? "!text-sky-500 font-semibold" : ""}`}
               >
                 {dict.navigation.blog}
               </Link>
               <Link
                 href={`/${lang}/contact`}
                 onClick={() => setIsOpen(false)}
-                className="text-2xl font-light text-slate-600"
+                className={`${mobileNavLinkStyles} ${isActiveRoute(`/${lang}/contact`) ? "!text-sky-500 font-semibold" : ""}`}
               >
                 {dict.navigation.contact}
               </Link>
