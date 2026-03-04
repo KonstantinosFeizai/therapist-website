@@ -16,7 +16,7 @@ export function middleware(request: NextRequest) {
 
   // Αν δεν την έχει, κάνουμε redirect στην default γλώσσα (el)
   request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  return NextResponse.redirect(request.nextUrl, 308);
 }
 
 export const config = {
