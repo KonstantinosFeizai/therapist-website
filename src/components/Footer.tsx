@@ -18,9 +18,9 @@ export default function Footer({ dict, lang }: FooterProps) {
   const headingStyles =
     "text-base font-bold text-slate-900 uppercase tracking-widest mb-6";
   const linkStyles =
-    "text-base text-slate-600 hover:text-pink-400 transition-colors";
+    "text-base text-slate-600 hover:text-[#fea1a2] transition-colors";
   const contactLinkStyles =
-    "text-base text-slate-600 hover:text-sky-500 transition-colors";
+    "text-base text-slate-600 hover:text-[#183f80] transition-colors";
   const bottomTextStyles = "text-base text-slate-400";
 
   return (
@@ -44,7 +44,7 @@ export default function Footer({ dict, lang }: FooterProps) {
               />
             </Link>
             <p className="mt-4 text-base font-semibold text-slate-800">
-              Μελίσα Τσέλα
+              {dict.footer.name}
             </p>
             <p className="text-xs text-slate-500 uppercase tracking-wider mt-1">
               {dict.footer.title}
@@ -110,7 +110,7 @@ export default function Footer({ dict, lang }: FooterProps) {
                   href="https://www.linkedin.com/in/melisa-tsela/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-sky-500 transition-colors"
+                  className="text-slate-400 hover:text-[#183f80] transition-colors"
                 >
                   <span className="sr-only">LinkedIn</span>
                   <svg
@@ -125,7 +125,7 @@ export default function Footer({ dict, lang }: FooterProps) {
                   href="https://www.instagram.com/melisa.tsela.psychotherapy/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-pink-500 transition-colors"
+                  className="text-slate-400 hover:text-[#fea1a2] transition-colors"
                 >
                   <span className="sr-only">Instagram</span>
                   <svg

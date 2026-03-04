@@ -1,7 +1,38 @@
+import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionary";
 import FadeIn from "@/components/FadeIn";
 import HeroAnimation from "@/components/HeroAnimation";
 import Link from "next/link";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const isGreek = lang === "el";
+
+  return {
+    title: isGreek
+      ? "Melisa Tsela | Ψυχολόγος - Ψυχοθεραπεύτρια"
+      : "Melisa Tsela | Psychologist - Psychotherapist",
+    description: isGreek
+      ? "Η Μελίσα Τσέλα είναι Ψυχολόγος - Ψυχοθεραπεύτρια και προσφέρει online συνεδρίες ψυχοθεραπείας και συμβουλευτικής."
+      : "Melisa Tsela is a Psychologist - Psychotherapist offering online psychotherapy and counseling sessions.",
+    keywords: [
+      "Melisa Tsela",
+      "melisa tsela",
+      "melisa tsela psixologos",
+      "Μελίσα Τσέλα",
+      "ψυχολόγος",
+      "ψυχοθεραπεύτρια",
+      "online ψυχοθεραπεία",
+    ],
+    alternates: {
+      canonical: `/${lang}`,
+    },
+  };
+}
 
 export default async function Home({
   params,
@@ -10,12 +41,49 @@ export default async function Home({
 }) {
   const { lang } = await params;
   const dict = await getDictionary(lang as "el" | "en");
+  const isGreek = lang === "el";
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://www.melisatsela.gr/#person",
+        name: "Melisa Tsela",
+        url: "https://www.melisatsela.gr",
+        image: "https://www.melisatsela.gr/images/melisa.png",
+        jobTitle: isGreek ? "Ψυχολόγος - Ψυχοθεραπεύτρια" : "Psychologist - Psychotherapist",
+        sameAs: [
+          "https://www.linkedin.com/in/melisa-tsela/",
+          "https://www.instagram.com/melisa.tsela.psychotherapy/",
+        ],
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://www.melisatsela.gr/#service",
+        name: isGreek ? "Melisa Tsela Ψυχοθεραπεία" : "Melisa Tsela Psychotherapy",
+        url: `https://www.melisatsela.gr/${lang}`,
+        provider: {
+          "@id": "https://www.melisatsela.gr/#person",
+        },
+        email: "mailto:melisatsela00@gmail.com",
+        telephone: "+306942471869",
+        areaServed: "GR",
+        availableLanguage: ["el", "en"],
+      },
+    ],
+  };
 
   return (
     <div
       className="relative min-h-screen bg-cover bg-center bg-fixed"
       style={{ backgroundImage: "url('/images/vecteezy_minimalist.jpg')" }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       {/* Overlay για καλύτερη αναγνωσιμότητα */}
       <div className="absolute inset-0 bg-white/80 -z-10"></div>
 
@@ -46,13 +114,13 @@ export default async function Home({
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <Link
                 href={`/${lang}/contact`}
-                className="rounded-full bg-sky-500 px-10 py-4 text-sm font-semibold text-white shadow-md hover:bg-sky-600 hover:shadow-sky-200 transition-all active:scale-95"
+                className="rounded-full bg-[#183f80] px-10 py-4 text-sm font-semibold text-white shadow-md hover:bg-[#2a5aa8] transition-colors duration-200 ease-in-out transform-gpu will-change-transform active:scale-[0.99]"
               >
                 {dict.home.contact_cta}
               </Link>
               <Link
                 href={`/${lang}/bio`}
-                className="text-sm font-semibold leading-6 text-slate-700 hover:text-pink-500 transition-colors flex items-center"
+                className="text-sm font-semibold leading-6 text-slate-700 hover:text-[#fea1a2] transition-colors flex items-center"
               >
                 {dict.navigation.bio}{" "}
                 <span className="ml-2" aria-hidden="true">
@@ -75,12 +143,12 @@ export default async function Home({
             {/* Card 1 - Ατομική Θεραπεία */}
             <FadeIn delay={0.3}>
               <div className="group relative">
-                <div className="absolute inset-0 rounded-3xl bg-sky-50/60 ring-1 ring-sky-100 transition-all duration-300 group-hover:bg-sky-50"></div>
-                <span className="absolute -top-6 left-10 h-16 w-16 rounded-full bg-sky-50/60 ring-1 ring-sky-100 transition-all duration-300 group-hover:bg-sky-50"></span>
-                <span className="absolute -top-3 right-12 h-12 w-12 rounded-full bg-sky-50/60 ring-1 ring-sky-100 transition-all duration-300 group-hover:bg-sky-50"></span>
-                <span className="absolute top-8 -left-6 h-14 w-14 rounded-full bg-sky-50/60 ring-1 ring-sky-100 transition-all duration-300 group-hover:bg-sky-50"></span>
+                <div className="absolute inset-0 rounded-3xl bg-[#a3d3e1]/60 ring-1 ring-[#a3d3e1]/70 transition-all duration-300 group-hover:bg-[#a3d3e1]/80"></div>
+                <span className="absolute -top-6 left-10 h-16 w-16 rounded-full bg-[#a3d3e1]/60 ring-1 ring-[#a3d3e1]/70 transition-all duration-300 group-hover:bg-[#a3d3e1]/80"></span>
+                <span className="absolute -top-3 right-12 h-12 w-12 rounded-full bg-[#a3d3e1]/60 ring-1 ring-[#a3d3e1]/70 transition-all duration-300 group-hover:bg-[#a3d3e1]/80"></span>
+                <span className="absolute top-8 -left-6 h-14 w-14 rounded-full bg-[#a3d3e1]/60 ring-1 ring-[#a3d3e1]/70 transition-all duration-300 group-hover:bg-[#a3d3e1]/80"></span>
                 <div className="relative z-10 p-8">
-                  <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-sky-500 mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-[#4a8da0] mb-6 group-hover:scale-110 transition-transform">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -109,12 +177,12 @@ export default async function Home({
             {/* Card 2 - Διαδικτυακές Συνεδρίες */}
             <FadeIn delay={0.2}>
               <div className="group relative">
-                <div className="absolute inset-0 rounded-3xl bg-pink-50/60 ring-1 ring-pink-100 transition-all duration-300 group-hover:bg-pink-50"></div>
-                <span className="absolute -top-6 left-8 h-16 w-16 rounded-full bg-pink-50/60 ring-1 ring-pink-100 transition-all duration-300 group-hover:bg-pink-50"></span>
-                <span className="absolute -top-4 right-10 h-14 w-14 rounded-full bg-pink-50/60 ring-1 ring-pink-100 transition-all duration-300 group-hover:bg-pink-50"></span>
-                <span className="absolute top-9 -left-7 h-12 w-12 rounded-full bg-pink-50/60 ring-1 ring-pink-100 transition-all duration-300 group-hover:bg-pink-50"></span>
+                <div className="absolute inset-0 rounded-3xl bg-[#fea1a2]/45 ring-1 ring-[#fea1a2]/60 transition-all duration-300 group-hover:bg-[#fea1a2]/60"></div>
+                <span className="absolute -top-6 left-8 h-16 w-16 rounded-full bg-[#fea1a2]/45 ring-1 ring-[#fea1a2]/60 transition-all duration-300 group-hover:bg-[#fea1a2]/60"></span>
+                <span className="absolute -top-4 right-10 h-14 w-14 rounded-full bg-[#fea1a2]/45 ring-1 ring-[#fea1a2]/60 transition-all duration-300 group-hover:bg-[#fea1a2]/60"></span>
+                <span className="absolute top-9 -left-7 h-12 w-12 rounded-full bg-[#fea1a2]/45 ring-1 ring-[#fea1a2]/60 transition-all duration-300 group-hover:bg-[#fea1a2]/60"></span>
                 <div className="relative z-10 p-8">
-                  <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-pink-500 mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-[#d86c74] mb-6 group-hover:scale-110 transition-transform">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -143,12 +211,12 @@ export default async function Home({
             {/* Card 3 - Προσωπική Ανάπτυξη */}
             <FadeIn delay={0.3}>
               <div className="group relative">
-                <div className="absolute inset-0 rounded-3xl bg-slate-50 ring-1 ring-slate-100 transition-all duration-300 group-hover:bg-slate-100/50"></div>
-                <span className="absolute -top-6 left-10 h-16 w-16 rounded-full bg-slate-50 ring-1 ring-slate-100 transition-all duration-300 group-hover:bg-slate-100/50"></span>
-                <span className="absolute -top-3 right-12 h-12 w-12 rounded-full bg-slate-50 ring-1 ring-slate-100 transition-all duration-300 group-hover:bg-slate-100/50"></span>
-                <span className="absolute top-8 -left-6 h-14 w-14 rounded-full bg-slate-50 ring-1 ring-slate-100 transition-all duration-300 group-hover:bg-slate-100/50"></span>
+                <div className="absolute inset-0 rounded-3xl bg-[#bcc1e7]/45 ring-1 ring-[#bcc1e7]/70 transition-all duration-300 group-hover:bg-[#bcc1e7]/60"></div>
+                <span className="absolute -top-6 left-10 h-16 w-16 rounded-full bg-[#bcc1e7]/45 ring-1 ring-[#bcc1e7]/70 transition-all duration-300 group-hover:bg-[#bcc1e7]/60"></span>
+                <span className="absolute -top-3 right-12 h-12 w-12 rounded-full bg-[#bcc1e7]/45 ring-1 ring-[#bcc1e7]/70 transition-all duration-300 group-hover:bg-[#bcc1e7]/60"></span>
+                <span className="absolute top-8 -left-6 h-14 w-14 rounded-full bg-[#bcc1e7]/45 ring-1 ring-[#bcc1e7]/70 transition-all duration-300 group-hover:bg-[#bcc1e7]/60"></span>
                 <div className="relative z-10 p-8">
-                  <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-500 mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-[#747aa8] mb-6 group-hover:scale-110 transition-transform">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -180,10 +248,10 @@ export default async function Home({
       <section className="py-24 ">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-[11px] font-bold tracking-[0.2em] text-pink-500 uppercase mb-4">
+            <h2 className="text-[16px] font-bold tracking-[0.2em] text-[#fea1a2] uppercase mb-4">
               {dict.home.process.subtitle || "Η Διαδρομή"}
             </h2>
-            <h3 className="text-3xl font-light text-slate-800">
+            <h3 className="text-3xl font-light text-[#183f80] mb-4">
               {dict.home.process.title || "Πώς θα δουλέψουμε μαζί"}
             </h3>
           </div>
@@ -196,8 +264,8 @@ export default async function Home({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
               {/* Βήμα 1 */}
               <div className="flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl font-light text-sky-400 z-10 mb-8 transition-transform hover:scale-110">
-                  01
+                <div className="w-24 h-24 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl font-light text-[#a3d3e1] z-10 mb-8 transition-transform duration-300 ease-in-out hover:scale-110">
+                  1
                 </div>
                 <h4 className="text-lg font-semibold text-slate-800 mb-4">
                   {dict.home.process.step1_title || "Πρώτη Επαφή"}
@@ -210,8 +278,8 @@ export default async function Home({
 
               {/* Βήμα 2 */}
               <div className="flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl font-light text-pink-400 z-10 mb-8 transition-transform hover:scale-110">
-                  02
+                <div className="w-24 h-24 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl font-light text-[#fea1a2] z-10 mb-8 transition-transform duration-300 ease-in-out hover:scale-110">
+                  2
                 </div>
                 <h4 className="text-lg font-semibold text-slate-800 mb-4">
                   {dict.home.process.step2_title || "Η Συνάντηση"}
@@ -224,8 +292,8 @@ export default async function Home({
 
               {/* Βήμα 3 */}
               <div className="flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl font-light text-slate-400 z-10 mb-8 transition-transform hover:scale-110">
-                  03
+                <div className="w-24 h-24 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl font-light text-[#183f80] z-10 mb-8 transition-transform duration-300 ease-in-out hover:scale-110">
+                  3
                 </div>
                 <h4 className="text-lg font-semibold text-slate-800 mb-4">
                   {dict.home.process.step3_title || "Θεραπευτική Πορεία"}
@@ -241,7 +309,7 @@ export default async function Home({
             <div className="mt-20 flex justify-center">
               <Link
                 href={`/${lang}/contact`}
-                className="group flex items-center gap-2 px-10 py-4 rounded-full border border-slate-200 text-slate-600 font-medium hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all active:scale-95"
+                className="group flex items-center gap-2 px-10 py-4 rounded-full border border-slate-200 bg-[#183f80] text-white font-medium hover:bg-[#2a5aa8] hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-200 ease-in-out active:scale-[0.99]"
               >
                 {dict.navigation.contact}
                 <span className="transition-transform group-hover:translate-x-1">

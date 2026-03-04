@@ -1,5 +1,25 @@
+import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionary";
 import ContactForm from "@/components/ContactForm";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const isGreek = lang === "el";
+
+  return {
+    title: isGreek ? "Επικοινωνία | Melisa Tsela" : "Contact | Melisa Tsela",
+    description: isGreek
+      ? "Επικοινωνήστε με τη Μελίσα Τσέλα για online συνεδρίες ψυχοθεραπείας και συμβουλευτικής."
+      : "Contact Melisa Tsela for online psychotherapy and counseling sessions.",
+    alternates: {
+      canonical: `/${lang}/contact`,
+    },
+  };
+}
 
 export default async function ContactPage({
   params,

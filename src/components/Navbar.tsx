@@ -36,9 +36,10 @@ export default function Navbar({ dict, lang }: NavbarProps) {
   };
 
   const navLinkStyles =
-    "text-[16px] font-bold text-slate-500 hover:text-[#89CFF0] transition-all duration-200 ease-out tracking-wide";
-  const activeLinkStyles = "!text-sky-500 !text-[18px] font-semibold";
-  const mobileNavLinkStyles = "text-2xl font-light text-slate-600";
+    "text-[16px] font-bold text-slate-500 hover:text-[#fea1a2] transition-all duration-200 ease-out tracking-wide uppercase";
+  const activeLinkStyles = "!text-[#183f80] !text-[18px] font-semibold";
+  const mobileNavLinkStyles =
+    "text-2xl font-light text-slate-600 uppercase hover:text-[#fea1a2] transition-colors duration-200";
   const normalizedPathname = pathname?.replace(/\/+$/, "") || "";
   const isActiveRoute = (route: string) => {
     const normalizedRoute = route.replace(/\/+$/, "");
@@ -159,7 +160,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
               <div className="flex items-center border-l pl-6 border-slate-200">
                 <Link
                   href={getTransformedPath(nextLang)}
-                  className="text-[11px] font-bold tracking-widest text-slate-400 hover:text-pink-500 uppercase"
+                  className="text-[11px] font-bold tracking-widest text-slate-400 hover:text-[#fea1a2] uppercase"
                 >
                   {lang === "el" ? "EN" : "EL"}
                 </Link>
@@ -251,7 +252,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
                 <Link
                   href={getTransformedPath(nextLang)}
                   onClick={() => setIsOpen(false)}
-                  className="text-pink-500 font-bold tracking-widest uppercase"
+                  className="text-pink-500 hover:text-[#fea1a2] transition-colors duration-200 font-bold tracking-widest uppercase"
                 >
                   {lang === "el" ? "EN" : "EL"}
                 </Link>

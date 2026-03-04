@@ -1,6 +1,26 @@
+import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionary";
 import Image from "next/image";
 import BlobLottie from "@/components/BlobLottie";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const isGreek = lang === "el";
+
+  return {
+    title: isGreek ? "Βιογραφικό | Melisa Tsela" : "Biography | Melisa Tsela",
+    description: isGreek
+      ? "Γνωρίστε τη Μελίσα Τσέλα, Ψυχολόγο - Ψυχοθεραπεύτρια, την εκπαίδευση, την εμπειρία και τη θεραπευτική της προσέγγιση."
+      : "Learn more about Melisa Tsela, Psychologist - Psychotherapist, her training, experience, and therapeutic approach.",
+    alternates: {
+      canonical: `/${lang}/bio`,
+    },
+  };
+}
 
 export default async function BioPage({
   params,
