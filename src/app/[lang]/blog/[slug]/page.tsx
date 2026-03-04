@@ -10,21 +10,31 @@ import { Metadata } from "next";
 export async function generateMetadata({
   params,
 }: {
-  params: any;
+  params: Promise<{ lang: string; slug: string }>;
 }): Promise<Metadata> {
   const { lang, slug } = await params;
   const isEn = lang === "en";
 
-  const query = `*[_type == "post" && slug.current == "${slug}"][0] {
+  const query = `*[_type == "post" && slug.current == $slug][0] {
     "title": ${isEn ? "title_en" : "title_el"},
     mainImage,
     // Εδώ τραβάμε πλέον το σωστό excerpt ανάλογα τη γλώσσα
     "description": ${isEn ? "excerpt_en" : "excerpt_el"}
   }`;
 
-  const post = await client.fetch(query);
+  const post = await client.fetch(query, { slug });
 
-  if (!post) return { title: "Post Not Found" };
+  if (!post) {
+    return {
+      title: isEn
+        ? "Post Not Found | Melisa Tsela"
+        : "Το άρθρο δεν βρέθηκε | Melisa Tsela",
+      robots: {
+        index: false,
+        follow: true,
+      },
+    };
+  }
 
   const imageUrl = urlFor(post.mainImage).url();
   const description =
@@ -39,8 +49,8 @@ export async function generateMetadata({
     openGraph: {
       title: post.title,
       description: description,
-      url: `https://www.melissasite.gr/${lang}/blog/${slug}`, // Άλλαξε το domain με το δικό σου
-      siteName: "Melissa - Therapist",
+      url: `https://www.melisatsela.gr/${lang}/blog/${slug}`,
+      siteName: "Melisa Tsela",
       images: [
         {
           url: imageUrl,
@@ -58,12 +68,15 @@ export async function generateMetadata({
       description: description,
       images: [imageUrl],
     },
+    alternates: {
+      canonical: `/${lang}/blog/${slug}`,
+    },
   };
 }
 
 async function getPost(slug: string, lang: string) {
   const isEn = lang === "en";
-  const query = `*[_type == "post" && slug.current == "${slug}"][0] {
+  const query = `*[_type == "post" && slug.current == $slug][0] {
     "title": ${isEn ? "title_en" : "title_el"},
     mainImage,
     publishedAt,
@@ -72,7 +85,7 @@ async function getPost(slug: string, lang: string) {
     "authorImage": author->image,
     "categories": categories[]->${isEn ? "title_en" : "title_el"}
   }`;
-  const data = await client.fetch(query);
+  const data = await client.fetch(query, { slug });
   return data;
 }
 

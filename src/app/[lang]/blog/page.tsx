@@ -1,6 +1,26 @@
+import type { Metadata } from "next";
 import { client } from "@/lib/sanity";
 import { getDictionary } from "@/lib/dictionary";
 import BlogList from "@/components/BlogList";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const isGreek = lang === "el";
+
+  return {
+    title: isGreek ? "Blog | Melisa Tsela" : "Blog | Melisa Tsela",
+    description: isGreek
+      ? "Άρθρα ψυχολογίας, ψυχοθεραπείας και προσωπικής ανάπτυξης από τη Melisa Tsela."
+      : "Articles about psychology, psychotherapy, and personal growth by Melisa Tsela.",
+    alternates: {
+      canonical: `/${lang}/blog`,
+    },
+  };
+}
 
 // Το Query που "ρωτάει" το Sanity για τα άρθρα
 async function getPosts(lang: string) {

@@ -78,9 +78,9 @@ export async function generateMetadata({
       },
     },
     icons: {
-      icon: [{ url: "/images/favicon.ico", type: "image/x-icon" }],
-      shortcut: [{ url: "/images/favicon.ico", type: "image/x-icon" }],
-      apple: [{ url: "/images/favicon.ico", type: "image/x-icon" }],
+      icon: [{ url: "/favicon.ico", type: "image/x-icon" }],
+      shortcut: [{ url: "/favicon.ico", type: "image/x-icon" }],
+      apple: [{ url: "/favicon.ico", type: "image/x-icon" }],
     },
   };
 }

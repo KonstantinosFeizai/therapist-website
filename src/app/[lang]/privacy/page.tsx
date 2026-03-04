@@ -1,4 +1,26 @@
+import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionary";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const isGreek = lang === "el";
+
+  return {
+    title: isGreek
+      ? "Πολιτική Απορρήτου | Melisa Tsela"
+      : "Privacy Policy | Melisa Tsela",
+    description: isGreek
+      ? "Πολιτική απορρήτου και διαχείριση προσωπικών δεδομένων για τον ιστότοπο της Melisa Tsela."
+      : "Privacy policy and personal data handling for Melisa Tsela website.",
+    alternates: {
+      canonical: `/${lang}/privacy`,
+    },
+  };
+}
 
 export default async function PrivacyPage({
   params,
