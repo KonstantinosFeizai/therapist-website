@@ -39,7 +39,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
     "text-[16px] font-bold text-slate-500 hover:text-[#fea1a2] transition-all duration-200 ease-out tracking-wide uppercase";
   const activeLinkStyles = "!text-[#183f80] !text-[18px] font-semibold";
   const mobileNavLinkStyles =
-    "text-2xl font-light text-slate-600 uppercase hover:text-[#fea1a2] transition-colors duration-200";
+    "text-2xl font-light text-slate-500 uppercase hover:text-[#fea1a2] active:text-[#fea1a2] focus-visible:text-[#fea1a2] transition-colors duration-200";
   const normalizedPathname = pathname?.replace(/\/+$/, "") || "";
   const isActiveRoute = (route: string) => {
     const normalizedRoute = route.replace(/\/+$/, "");
@@ -125,7 +125,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
                   width={110}
                   height={35}
                   priority
-                  className="transition-transform duration-300 ease-in-out hover:scale-110"
+                  className="animate-soft-pulse-strong transition-transform duration-300 ease-in-out hover:scale-110"
                 />
               </Link>
             </div>
@@ -222,28 +222,28 @@ export default function Navbar({ dict, lang }: NavbarProps) {
               <Link
                 href={`/${lang}`}
                 onClick={() => setIsOpen(false)}
-                className={`${mobileNavLinkStyles} ${isActiveRoute(`/${lang}`) ? "!text-sky-500 font-semibold" : ""}`}
+                className={`${mobileNavLinkStyles} ${isActiveRoute(`/${lang}`) ? "!text-[#183f80] font-semibold" : ""}`}
               >
                 {dict.navigation.home}
               </Link>
               <Link
                 href={`/${lang}/bio`}
                 onClick={() => setIsOpen(false)}
-                className={`${mobileNavLinkStyles} ${isActiveRoute(`/${lang}/bio`) ? "!text-sky-500 font-semibold" : ""}`}
+                className={`${mobileNavLinkStyles} ${isActiveRoute(`/${lang}/bio`) ? "!text-[#183f80] font-semibold" : ""}`}
               >
                 {dict.navigation.bio}
               </Link>
               <Link
                 href={`/${lang}/blog`}
                 onClick={() => setIsOpen(false)}
-                className={`${mobileNavLinkStyles} ${isActiveRoute(`/${lang}/blog`) ? "!text-sky-500 font-semibold" : ""}`}
+                className={`${mobileNavLinkStyles} ${isActiveRoute(`/${lang}/blog`) ? "!text-[#183f80] font-semibold" : ""}`}
               >
                 {dict.navigation.blog}
               </Link>
               <Link
                 href={`/${lang}/contact`}
                 onClick={() => setIsOpen(false)}
-                className={`${mobileNavLinkStyles} ${isActiveRoute(`/${lang}/contact`) ? "!text-sky-500 font-semibold" : ""}`}
+                className={`${mobileNavLinkStyles} ${isActiveRoute(`/${lang}/contact`) ? "!text-[#183f80] font-semibold" : ""}`}
               >
                 {dict.navigation.contact}
               </Link>
@@ -252,7 +252,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
                 <Link
                   href={getTransformedPath(nextLang)}
                   onClick={() => setIsOpen(false)}
-                  className="text-pink-500 hover:text-[#fea1a2] transition-colors duration-200 font-bold tracking-widest uppercase"
+                  className="text-slate-500 hover:text-[#fea1a2] active:text-[#fea1a2] focus-visible:text-[#fea1a2] transition-colors duration-200 font-bold tracking-widest uppercase"
                 >
                   {lang === "el" ? "EN" : "EL"}
                 </Link>

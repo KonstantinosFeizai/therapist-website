@@ -64,7 +64,7 @@ export default async function BioPage({
               <p className="text-xl text-slate-600 font-light leading-relaxed">
                 {dict.bio.hero_description}
               </p>
-              <div className="mt-8 p-8  rounded-[2.5rem] border border-white shadow-xl shadow-rose-500/5 relative overflow-hidden group">
+              <div className="mt-8 p-8  rounded-[2.5rem] bg-[#fef5ee] border border-[#eeb8b9] shadow-xl shadow-rose-500/5 relative overflow-hidden group">
                 {/* Μια διακριτική λεπτομέρεια στην γωνία */}
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                   <svg
@@ -82,7 +82,7 @@ export default async function BioPage({
                   </svg>
                 </div>
 
-                <h2 className="text-[10px] font-bold text-rose-500 uppercase tracking-[0.3em] mb-3">
+                <h2 className="text-[10px] font-bold text-[#fea1a2] uppercase tracking-[0.3em] mb-3">
                   {dict.bio.approach_title}
                 </h2>
                 <p className="text-slate-600 leading-relaxed italic font-light text-lg">
@@ -161,33 +161,15 @@ export default async function BioPage({
         </div>
       </section>
 
-      {/* 3. Τι είναι η Συστημική */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h3 className="text-3xl font-light text-slate-800 mb-8">
-            {dict.bio.systemic_title}
-          </h3>
-          <p className="text-lg text-slate-500 leading-relaxed mb-12">
-            {dict.bio.systemic_desc}
-          </p>
-          <div className="inline-block p-8 bg-rose-50/50 rounded-[3rem] border border-rose-100 text-left">
-            <h4 className="text-sm font-bold text-rose-500 uppercase tracking-widest mb-4">
-              {dict.bio.systemic_tech_title}
-            </h4>
-            <p className="text-slate-600 italic leading-relaxed">
-              {dict.bio.systemic_tech_desc}
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Quality Note */}
       <section className="pb-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="h-px bg-slate-200/60 w-full mb-12"></div>
-          <p className="text-center text-slate-500 text-sm italic font-light tracking-wide">
-            {dict.bio.quality_note}
-          </p>
+          <div className="max-w-4xl mx-auto p-8 bg-[#fea1a2]/20 rounded-[2.5rem] border border-[#fea1a2]/40 text-center">
+            <p className="text-slate-600 text-sm italic font-light tracking-wide leading-relaxed">
+              {dict.bio.quality_note}
+            </p>
+          </div>
         </div>
       </section>
     </main>

@@ -2,7 +2,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function FaqAccordion({ questions }: { questions: any[] }) {
+type FaqItem = {
+  q: string;
+  a: string;
+};
+
+export default function FaqAccordion({ questions }: { questions: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -18,7 +23,7 @@ export default function FaqAccordion({ questions }: { questions: any[] }) {
           >
             <span className="font-medium text-slate-800">{item.q}</span>
             <span
-              className={`transform transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""}`}
+              className={`transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${openIndex === index ? "rotate-180" : ""}`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +48,17 @@ export default function FaqAccordion({ questions }: { questions: any[] }) {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{
+                  height: {
+                    duration: 0.5,
+                    ease: [0.22, 1, 0.36, 1],
+                  },
+                  opacity: {
+                    duration: 0.35,
+                    ease: [0.33, 1, 0.68, 1],
+                  },
+                }}
+                className="overflow-hidden"
               >
                 <div className="px-6 pb-6 text-slate-600 font-light leading-relaxed">
                   {item.a}

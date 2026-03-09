@@ -7,14 +7,14 @@
     "booking": "Book a Session"
   },
   "home": {
-    "welcome": "Welcome to my space",
+    "welcome": "Welcome to my space!",
     "description": "Here you will find support and guidance.",
     "contact_cta": "Contact",
-    "intro_text": "Hello, I am [Psychologist's Name]. I believe in creating a safe and warm space where every individual can explore themselves without judgment. My approach focuses on empowerment and developing mechanisms to face daily challenges with calm and confidence.",
+    "intro_text": "I am Melisa Tsela, a licensed Psychologist specializing in Systemic Psychotherapy and Counseling. In systemic psychotherapy, we approach each person within the context of their relationships, interactions, and roles. Through conversation, as well as experiential tools that always follow your own pace, we unfold the patterns that repeat in your life. Our goal is to help you view your difficulties from a new perspective and discover new communication and behavior patterns that can bring balance not only to you, but also to your relationships.",
     "services": {
-      "individual_title": "Individual Therapy",
+      "individual_title": "Individual Psychotherapy",
       "individual_desc": "A personal space to share your thoughts and work together on issues of anxiety, depression, or self-improvement.",
-      "online_title": "Online Sessions",
+      "online_title": "Counseling",
       "online_desc": "Distance is not an obstacle. We conduct sessions via secure video conferencing platforms from the comfort of your home.",
       "growth_title": "Personal Growth",
       "growth_desc": "Focus on self-awareness and developing new skills for a more balanced and meaningful life."
@@ -23,29 +23,29 @@
       "subtitle": "The Process",
       "title": "How We Will Work Together",
       "step1_title": "First Contact",
-      "step1_desc": "You reach out to me...",
+      "step1_desc": "You contact me via email, phone, or message to share your request. Deciding to take the first step is enough.",
       "step2_title": "The Meeting",
-      "step2_desc": "We meet to...",
+      "step2_desc": "We meet online in a safe and private digital space. It is our opportunity to get to know each other, see whether you feel comfortable, and discuss how I can support you.",
       "step3_title": "Progress",
-      "step3_desc": "We begin the journey..."
+      "step3_desc": "We begin our therapeutic journey with small, steady steps."
     }
   },
   "bio": {
     "hero_title": "A Few Words About Me",
-    "hero_description": "I am Melisa Tsela, a licensed Psychologist. My approach focuses on understanding the individual through the networks of their relationships.",
-    "approach_title": "My Philosophy",
-    "approach_text": "The systemic approach I follow examines difficulties not as individual problems, but always within the context of the broader system (family, work, social environment) and its interactions.",
+    "hero_description": "From a very early age, even back in my school years, I realized the power of deep, meaningful listening. Observing how rare it is to find someone who listens with genuine attention and without judgment, I decided to turn this need into my profession.\n\nI believe that psychotherapy should not be a 'strict' or judgmental process. Having been in the client's seat myself, I understood that true change does not come through pressure, but through understanding and acceptance. For me, therapy is the creation of a safe space where you can-perhaps for the first time-hear your own voice and feel that someone is truly present, there to understand you.\n\nIn our sessions, my goal is not to offer ready-made answers or quick fixes, but to provide a secure environment that will help you reflect and see your story through a different lens. Ultimately, psychotherapy is an act of self-care, in a setting where it is finally permitted not to be 'perfect'.",
+    "approach_title": "MY PERSPECTIVE",
+    "approach_text": "I believe that the challenges we face are not flaws in our character, but the ways we learned to survive within our relationships, family, work, and everyday life.",
 
     "education_title": "Education & Training",
-    "edu_uni": "[University Name] - Department of Psychology",
-    "edu_systemic": "[Institute Name] - Specialization in Systemic Psychotherapy",
-    "edu_psychoanalysis": "[Institute Name] - Annual program 'Psychoanalytic Thinking and Practice'",
-    "edu_narrative": "[Institute Name] - Narrative tools and therapeutic techniques",
+    "edu_uni": "University of Ioannina - Department of Psychology",
+    "edu_systemic": "Ke.S.Me.Th. - Four-year Specialization in Systemic Psychotherapy and Counseling (E.F.T.A. & E.E.P.E.)",
+    "edu_psychoanalysis": "DI.KE.PSY. - Annual program 'Psychoanalytic Thinking and Practice'",
+    "edu_narrative": "Institute 'Logos Psychis' - Narrative tools and techniques in therapeutic practice",
 
     "experience_title": "Professional Experience",
-    "exp_center": "[Center Name] - Internship with adolescents & families",
-    "exp_volunteer": "[Organization Name] - Volunteer work as a Psychologist",
-    "exp_practice": "Private Practice - Individual online psychological support sessions",
+    "exp_center": "Private Practice - Psychologist, individual online psychological support sessions",
+    "exp_volunteer": "Municipal Clinics of the City of Athens - Psychologist, individual in-person psychological support sessions",
+    "exp_practice": "Athens Child Mental Health Center - Internship",
 
     "systemic_title": "What is Systemic Psychotherapy?",
     "systemic_desc": "It approaches the client through their family and close interpersonal relationships. Difficulties are resolved through the restructuring of relational patterns that we automatically adopt in our daily lives.",
@@ -67,7 +67,7 @@
     "form_phone": "Phone Number",
     "form_message": "Your Message",
     "form_send": "Send Message",
-    "online_notice": "All sessions are held exclusively via video call (Zoom, Skype, or Viber), ensuring flexibility and privacy."
+    "online_notice": "All sessions are held exclusively via video call (Zoom or Viber), ensuring flexibility and privacy."
   },
   "footer": {
     "name": "MELISA TSELA",
@@ -106,24 +106,32 @@
     "title": "Frequently Asked Questions",
     "questions": [
       {
-        "q": "How long does each session last?",
-        "a": "Each individual session lasts 60 minutes. It is important to be on time to make the most of the therapeutic hour."
+        "q": "How is an online session conducted?",
+        "a": "At the moment, sessions are conducted via a secure video platform (Zoom or Viber), depending on what works best for you. All you need is a stable internet connection and a quiet space."
       },
       {
-        "q": "How are the sessions conducted? Is it only online?",
-        "a": "Yes, sessions are conducted exclusively online via secure video conferencing platforms (Zoom, Skype, or Google Meet), allowing you to participate from the comfort of your own space."
-      },
-      {
-        "q": "What is the payment process?",
-        "a": "Payment is made via bank transfer or card. Payment must be completed before the session (prepayment) to finalize your appointment."
+        "q": "How can I pay for a session?",
+        "a": "Payment is made by bank transfer or through IRIS instant payments. Sessions are prepaid in order to confirm your appointment."
       },
       {
         "q": "What is the cancellation policy?",
-        "a": "Cancellations or changes are accepted up to 24 hours before the scheduled appointment. If canceled in less than 24 hours, the session is charged in full."
+        "a": "Cancellations or changes are accepted up to 24 hours before the scheduled appointment. If canceled in less than 24 hours, the session is charged in full. Exceptions apply for serious health or emergency reasons."
       },
       {
-        "q": "Is online therapy equally effective?",
-        "a": "Absolutely. Research shows that online therapy is just as effective as in-person therapy, while offering greater flexibility and saving travel time."
+        "q": "Is online psychotherapy as effective as in-person therapy?",
+        "a": "Absolutely. Research shows that online therapy can be just as effective as in-person therapy, while offering greater flexibility and saving travel time."
+      },
+      {
+        "q": "What about session confidentiality?",
+        "a": "Everything we discuss is covered by therapeutic confidentiality. Confidentiality is only lifted in situations involving risk."
+      },
+      {
+        "q": "What will I need to do in the first session?",
+        "a": "In our first meeting, we will have the opportunity to get to know each other and discuss what brings you to therapy. It is a space for you to see whether you feel comfortable with me and for us to decide how to move forward."
+      },
+      {
+        "q": "How long does each session last?",
+        "a": "Each individual session lasts 45 to 50 minutes. It is important to be on time so the therapeutic time can be fully used."
       }
     ]
   }

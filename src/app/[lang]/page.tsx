@@ -52,7 +52,9 @@ export default async function Home({
         name: "Melisa Tsela",
         url: "https://www.melisatsela.gr",
         image: "https://www.melisatsela.gr/images/melisa.png",
-        jobTitle: isGreek ? "Ψυχολόγος - Ψυχοθεραπεύτρια" : "Psychologist - Psychotherapist",
+        jobTitle: isGreek
+          ? "Ψυχολόγος - Ψυχοθεραπεύτρια"
+          : "Psychologist - Psychotherapist",
         sameAs: [
           "https://www.linkedin.com/in/melisa-tsela/",
           "https://www.instagram.com/melisa.tsela.psychotherapy/",
@@ -61,7 +63,9 @@ export default async function Home({
       {
         "@type": "ProfessionalService",
         "@id": "https://www.melisatsela.gr/#service",
-        name: isGreek ? "Melisa Tsela Ψυχοθεραπεία" : "Melisa Tsela Psychotherapy",
+        name: isGreek
+          ? "Melisa Tsela Ψυχοθεραπεία"
+          : "Melisa Tsela Psychotherapy",
         url: `https://www.melisatsela.gr/${lang}`,
         provider: {
           "@id": "https://www.melisatsela.gr/#person",
@@ -141,8 +145,8 @@ export default async function Home({
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {/* Card 1 - Ατομική Θεραπεία */}
-            <FadeIn delay={0.3}>
-              <div className="group relative">
+            <FadeIn delay={0} amount={0.35}>
+              <div className="group relative animate-soft-pulse">
                 <div className="absolute inset-0 rounded-3xl bg-[#a3d3e1]/60 ring-1 ring-[#a3d3e1]/70 transition-all duration-300 group-hover:bg-[#a3d3e1]/80"></div>
                 <span className="absolute -top-6 left-10 h-16 w-16 rounded-full bg-[#a3d3e1]/60 ring-1 ring-[#a3d3e1]/70 transition-all duration-300 group-hover:bg-[#a3d3e1]/80"></span>
                 <span className="absolute -top-3 right-12 h-12 w-12 rounded-full bg-[#a3d3e1]/60 ring-1 ring-[#a3d3e1]/70 transition-all duration-300 group-hover:bg-[#a3d3e1]/80"></span>
@@ -164,19 +168,19 @@ export default async function Home({
                       />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-800 mb-4">
+                  <h3 className="text-xl font-semibold text-[#183f80]/90 mb-4 text-center">
                     {dict.home.services.individual_title}
                   </h3>
                   <p className="text-slate-600 leading-relaxed text-sm">
-                    {dict.home.services.individual_desc}
+                    {/* {dict.home.services.individual_desc} */}
                   </p>
                 </div>
               </div>
             </FadeIn>
 
             {/* Card 2 - Διαδικτυακές Συνεδρίες */}
-            <FadeIn delay={0.2}>
-              <div className="group relative">
+            <FadeIn delay={0.15} amount={0.35}>
+              <div className="group relative animate-soft-pulse">
                 <div className="absolute inset-0 rounded-3xl bg-[#fea1a2]/45 ring-1 ring-[#fea1a2]/60 transition-all duration-300 group-hover:bg-[#fea1a2]/60"></div>
                 <span className="absolute -top-6 left-8 h-16 w-16 rounded-full bg-[#fea1a2]/45 ring-1 ring-[#fea1a2]/60 transition-all duration-300 group-hover:bg-[#fea1a2]/60"></span>
                 <span className="absolute -top-4 right-10 h-14 w-14 rounded-full bg-[#fea1a2]/45 ring-1 ring-[#fea1a2]/60 transition-all duration-300 group-hover:bg-[#fea1a2]/60"></span>
@@ -194,23 +198,23 @@ export default async function Home({
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"
+                        d="M12 20.25V12m0 0c-1.4 0-2.7-.5-3.75-1.35C7.2 9.8 6.5 8.6 6.3 7.25c1.35.05 2.65.5 3.75 1.35 1.05.85 1.75 2.05 1.95 3.4Zm0 0c1.4 0 2.7-.5 3.75-1.35 1.05-.85 1.75-2.05 1.95-3.4-1.35.05-2.65.5-3.75 1.35-1.05.85-1.75 2.05-1.95 3.4ZM8.25 20.25h7.5"
                       />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-800 mb-4">
+                  <h3 className="text-xl font-semibold text-[#183f80]/90 mb-4 text-center">
                     {dict.home.services.online_title}
                   </h3>
                   <p className="text-slate-600 leading-relaxed text-sm">
-                    {dict.home.services.online_desc}
+                    {/* {dict.home.services.online_desc} */}
                   </p>
                 </div>
               </div>
             </FadeIn>
 
             {/* Card 3 - Προσωπική Ανάπτυξη */}
-            <FadeIn delay={0.3}>
-              <div className="group relative">
+            <FadeIn delay={0.3} amount={0.35}>
+              <div className="group relative animate-soft-pulse">
                 <div className="absolute inset-0 rounded-3xl bg-[#bcc1e7]/45 ring-1 ring-[#bcc1e7]/70 transition-all duration-300 group-hover:bg-[#bcc1e7]/60"></div>
                 <span className="absolute -top-6 left-10 h-16 w-16 rounded-full bg-[#bcc1e7]/45 ring-1 ring-[#bcc1e7]/70 transition-all duration-300 group-hover:bg-[#bcc1e7]/60"></span>
                 <span className="absolute -top-3 right-12 h-12 w-12 rounded-full bg-[#bcc1e7]/45 ring-1 ring-[#bcc1e7]/70 transition-all duration-300 group-hover:bg-[#bcc1e7]/60"></span>
@@ -232,11 +236,11 @@ export default async function Home({
                       />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-800 mb-4">
+                  <h3 className="text-xl font-semibold text-[#183f80]/90 mb-4 text-center">
                     {dict.home.services.growth_title}
                   </h3>
                   <p className="text-slate-600 leading-relaxed text-sm">
-                    {dict.home.services.growth_desc}
+                    {/* {dict.home.services.growth_desc} */}
                   </p>
                 </div>
               </div>
@@ -264,13 +268,23 @@ export default async function Home({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
               {/* Βήμα 1 */}
               <div className="flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl font-light text-[#a3d3e1] z-10 mb-8 transition-transform duration-300 ease-in-out hover:scale-110">
-                  1
-                </div>
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">
+                <input
+                  id="process-step-1"
+                  type="checkbox"
+                  className="step-toggle sr-only"
+                />
+                <label
+                  htmlFor="process-step-1"
+                  className="step-trigger cursor-pointer mb-8"
+                >
+                  <div className="step-circle w-24 h-24 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl font-light text-[#a3d3e1] z-10 transition-transform duration-300 ease-in-out">
+                    1
+                  </div>
+                </label>
+                <h4 className="text-lg font-semibold text-[#183f80] mb-4">
                   {dict.home.process.step1_title || "Πρώτη Επαφή"}
                 </h4>
-                <p className="text-sm text-slate-500 leading-relaxed max-w-[250px]">
+                <p className="step-desc animate__animated text-sm text-slate-500 leading-relaxed max-w-[250px]">
                   {dict.home.process.step1_desc ||
                     "Επικοινωνείτε μαζί μου μέσω της φόρμας ή του Calendly για να ορίσουμε μια πρώτη γνωριμία."}
                 </p>
@@ -278,13 +292,23 @@ export default async function Home({
 
               {/* Βήμα 2 */}
               <div className="flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl font-light text-[#fea1a2] z-10 mb-8 transition-transform duration-300 ease-in-out hover:scale-110">
-                  2
-                </div>
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">
+                <input
+                  id="process-step-2"
+                  type="checkbox"
+                  className="step-toggle sr-only"
+                />
+                <label
+                  htmlFor="process-step-2"
+                  className="step-trigger cursor-pointer mb-8"
+                >
+                  <div className="step-circle w-24 h-24 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl font-light text-[#fea1a2] z-10 transition-transform duration-300 ease-in-out">
+                    2
+                  </div>
+                </label>
+                <h4 className="text-lg font-semibold text-[#183f80] mb-4">
                   {dict.home.process.step2_title || "Η Συνάντηση"}
                 </h4>
-                <p className="text-sm text-slate-500 leading-relaxed max-w-[250px]">
+                <p className="step-desc animate__animated text-sm text-slate-500 leading-relaxed max-w-[250px]">
                   {dict.home.process.step2_desc ||
                     "Πραγματοποιούμε την πρώτη μας συνεδρία όπου χτίζουμε τη βάση της εμπιστοσύνης μας."}
                 </p>
@@ -292,13 +316,23 @@ export default async function Home({
 
               {/* Βήμα 3 */}
               <div className="flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl font-light text-[#183f80] z-10 mb-8 transition-transform duration-300 ease-in-out hover:scale-110">
-                  3
-                </div>
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">
+                <input
+                  id="process-step-3"
+                  type="checkbox"
+                  className="step-toggle sr-only"
+                />
+                <label
+                  htmlFor="process-step-3"
+                  className="step-trigger cursor-pointer mb-8"
+                >
+                  <div className="step-circle w-24 h-24 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl font-light text-[#183f80] z-10 transition-transform duration-300 ease-in-out">
+                    3
+                  </div>
+                </label>
+                <h4 className="text-lg font-semibold text-[#183f80] mb-4">
                   {dict.home.process.step3_title || "Θεραπευτική Πορεία"}
                 </h4>
-                <p className="text-sm text-slate-500 leading-relaxed max-w-[250px]">
+                <p className="step-desc animate__animated text-sm text-slate-500 leading-relaxed max-w-[250px]">
                   {dict.home.process.step3_desc ||
                     "Ξεκινάμε ένα εξατομικευμένο πλάνο που εστιάζει στις δικές σας ανάγκες και την εξέλιξή σας."}
                 </p>

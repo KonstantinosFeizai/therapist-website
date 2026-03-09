@@ -49,7 +49,7 @@ export default async function FaqPage({
       />
 
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
-        <h1 className="text-4xl font-light text-slate-800 mb-12 text-center">
+        <h1 className="text-4xl font-light text-[#183f80] mb-12 text-center">
           {dict.faq.title}
         </h1>
 
@@ -62,7 +62,7 @@ export default async function FaqPage({
           </p>
           <a
             href={`/${lang}/contact`}
-            className="text-sky-500 font-medium hover:underline"
+            className="text-[#183f80] font-medium hover:underline"
           >
             Επικοινωνήστε μαζί μου απευθείας →
           </a>

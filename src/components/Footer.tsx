@@ -25,7 +25,7 @@ export default function Footer({ dict, lang }: FooterProps) {
 
   return (
     <footer
-      className={`bg-[#1974D2]/40 border-t border-slate-100 mt-auto ${lato.className}`}
+      className={`bg-[#d1e8f0] border-t border-slate-100 mt-auto ${lato.className}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-12">
@@ -40,7 +40,7 @@ export default function Footer({ dict, lang }: FooterProps) {
                 alt="Logo"
                 width={120} // Width in pixels
                 height={56} // Height in pixels
-                className="object-contain"
+                className="object-contain animate-soft-pulse"
               />
             </Link>
             <p className="mt-4 text-base font-semibold text-slate-800">

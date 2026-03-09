@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "animate.css";
 
 :root {
   --background: #ffffff;
@@ -55,4 +56,74 @@ body::-webkit-scrollbar-thumb {
 /* Δίνουμε προτεραιότητα στο Popup του Calendly έναντι των πάντων */
 .calendly-overlay {
   z-index: 99999 !important;
+}
+
+.step-desc {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  --animate-duration: 1.2s;
+  animation-fill-mode: both;
+  transition:
+    height 900ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 650ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-trigger:hover ~ .step-desc,
+.step-toggle:checked ~ .step-desc {
+  height: 9rem;
+  opacity: 1;
+  transition-delay: 0ms, 0ms;
+}
+
+.step-toggle:not(:checked) ~ .step-desc.animate__animated {
+  --animate-duration: 0.7s;
+  animation-name: fadeOut;
+}
+
+.step-toggle:not(:checked) ~ .step-desc {
+  transition-delay: 220ms, 220ms;
+}
+
+.step-trigger:hover ~ .step-desc.animate__animated,
+.step-toggle:checked ~ .step-desc.animate__animated {
+  --animate-duration: 1.2s;
+  animation-name: fadeInUp;
+}
+
+.step-trigger:hover .step-circle,
+.step-toggle:checked + .step-trigger .step-circle {
+  transform: scale(1.1);
+}
+
+@keyframes soft-pulse {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.012);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse 3.6s ease-in-out infinite;
+}
+
+@keyframes soft-pulse-strong {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-soft-pulse-strong {
+  animation: soft-pulse-strong 3.1s ease-in-out infinite;
 }

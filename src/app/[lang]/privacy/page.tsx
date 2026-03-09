@@ -32,9 +32,14 @@ export default async function PrivacyPage({
   const p = dict.privacy; // Σύντομη αναφορά στο privacy section
 
   return (
-    <main className="min-h-screen bg-[#fafaf9] py-10">
+    <main
+      className="relative min-h-screen bg-cover bg-center bg-fixed py-10"
+      style={{ backgroundImage: "url('/images/vecteezy_minimalist.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-white/80 -z-10"></div>
+
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
-        <h1 className="text-4xl font-light text-slate-800 mb-12 text-center">
+        <h1 className="text-4xl font-light text-[#183f80] mb-12 text-center">
           {p.title}
         </h1>
 
@@ -53,8 +58,8 @@ export default async function PrivacyPage({
             <p>{p.data_collection_text}</p>
           </section>
 
-          <section className="p-6 bg-rose-50/30 rounded-2xl border border-rose-100/50">
-            <h2 className="text-lg font-semibold text-rose-700 mb-3 tracking-wide">
+          <section className="p-6 bg-[#fef5ee] rounded-2xl border border-rose-100/50">
+            <h2 className="text-lg font-semibold text-[#fea1a2] mb-3 tracking-wide">
               {p.confidentiality_title}
             </h2>
             <p className="text-slate-700">{p.confidentiality_text}</p>
