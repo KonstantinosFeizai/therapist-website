@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getDictionary } from "@/lib/dictionary";
 import { calculateReadingTime } from "@/lib/utils";
 import { Metadata } from "next";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 // Αυτή η συνάρτηση δημιουργεί τα SEO tags δυναμικά
 export async function generateMetadata({
@@ -97,6 +98,8 @@ export default async function PostPage({
   const { lang, slug } = await params;
   const post = await getPost(slug, lang);
   const dict = await getDictionary(lang as "el" | "en");
+  const scrollToTopLabel =
+    lang === "en" ? "Back to top" : "Επιστροφή στην κορυφή";
   const readingTime = calculateReadingTime(post.body);
 
   if (!post) return <div className="pt-40 text-center">Post not found</div>;
@@ -204,6 +207,7 @@ export default async function PostPage({
           </article>
         </div>
       </div>
+      <ScrollToTopButton label={scrollToTopLabel} />
     </main>
   );
 }
