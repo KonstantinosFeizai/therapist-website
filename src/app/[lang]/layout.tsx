@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getDictionary } from "@/lib/dictionary";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const BASE_URL = new URL("https://www.melisatsela.gr");
 
@@ -108,6 +110,8 @@ export default async function RootLayout({
           <main className="flex-grow">{children}</main>
         </div>
         <Footer dict={dict} lang={lang} />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
