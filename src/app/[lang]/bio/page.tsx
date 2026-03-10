@@ -109,14 +109,14 @@ export default async function BioPage({
                   <span className="absolute -left-[43px] top-1 w-5 h-5 rounded-full bg-rose-50 border-2 border-rose-300 shadow-sm flex items-center justify-center">
                     <span className="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
                   </span>
-                  <p className="text-slate-600 leading-snug">
-                    {dict.bio.edu_uni}
+                  <p className="text-slate-600 leading-snug font-medium">
+                    {dict.bio.edu_systemic}
                   </p>
                 </li>
                 <li className="relative">
                   <span className="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-rose-400 border-4 border-white"></span>
-                  <p className="text-slate-600 leading-snug font-medium">
-                    {dict.bio.edu_systemic}
+                  <p className="text-slate-600 leading-snug ">
+                    {dict.bio.edu_narrative}
                   </p>
                 </li>
                 <li className="relative">
@@ -128,7 +128,7 @@ export default async function BioPage({
                 <li className="relative">
                   <span className="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-rose-400 border-4 border-white"></span>
                   <p className="text-slate-600 leading-snug">
-                    {dict.bio.edu_narrative}
+                    {dict.bio.edu_uni}
                   </p>
                 </li>
               </ul>

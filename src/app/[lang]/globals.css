@@ -69,7 +69,6 @@ body::-webkit-scrollbar-thumb {
     opacity 650ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.step-trigger:hover ~ .step-desc,
 .step-toggle:checked ~ .step-desc {
   height: 9rem;
   opacity: 1;
@@ -85,15 +84,30 @@ body::-webkit-scrollbar-thumb {
   transition-delay: 220ms, 220ms;
 }
 
-.step-trigger:hover ~ .step-desc.animate__animated,
 .step-toggle:checked ~ .step-desc.animate__animated {
   --animate-duration: 1.2s;
   animation-name: fadeInUp;
 }
 
-.step-trigger:hover .step-circle,
 .step-toggle:checked + .step-trigger .step-circle {
   transform: scale(1.1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .step-trigger:hover ~ .step-desc {
+    height: 9rem;
+    opacity: 1;
+    transition-delay: 0ms, 0ms;
+  }
+
+  .step-trigger:hover ~ .step-desc.animate__animated {
+    --animate-duration: 1.2s;
+    animation-name: fadeInUp;
+  }
+
+  .step-trigger:hover .step-circle {
+    transform: scale(1.1);
+  }
 }
 
 @keyframes soft-pulse {
